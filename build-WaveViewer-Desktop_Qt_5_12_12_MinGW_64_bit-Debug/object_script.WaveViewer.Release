@@ -1,0 +1,10 @@
+release/aboutdialog.o
+release/main.o
+release/mainwindow.o
+release/plot.o
+release/qcustomplot.o
+release/qrc_Icons.o
+release/moc_aboutdialog.o
+release/moc_mainwindow.o
+release/moc_plot.o
+release/moc_qcustomplot.o

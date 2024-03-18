@@ -20,6 +20,11 @@ Socket::Socket()
 	}
 }
 
+Socket::Socket(string sz_username) : Socket()
+{
+	this->username = username;
+}
+
 Socket::~Socket()
 {
 	WSACleanup();
@@ -42,11 +47,15 @@ void Socket::CloseConnection()
 	closesocket(_socket);
 }
 
-void Socket::SendDataMessage()
+const char* Socket::SendDataMessage()
 {
 	CHAR message[MAXSTRLEN]{};
+	CHAR buffer[MAXSTRLEN]{};
 	cout << "Input message: ";
 	cin.ignore();
-	cin.get(message, MAXSTRLEN);
+	cin.get(buffer, MAXSTRLEN);
+	sprintf(message, "%s: %s", username.c_str(), buffer);
 	SendData(message);
+	
+	return message;
 }

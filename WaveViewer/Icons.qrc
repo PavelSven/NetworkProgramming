@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/ICO">
+        <file>Ico/about.ico</file>
+        <file>Ico/audiowave_85916.ico</file>
+        <file>Ico/audiowave_audio_4642.ico</file>
+        <file>Ico/wave_85842.ico</file>
+    </qresource>
+</RCC>
