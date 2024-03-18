@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <CommCtrl.h>
 #include <cstdio>
+#include <cmath>
 #include "resource.h"
 
 BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -78,7 +79,6 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			CHAR prefix[5];
 			sprintf(prefix, "%i", i);
 			SendMessage(hEditPrefix, WM_SETTEXT, 0, (LPARAM)prefix);
-
 		}
 			break;
 		}
@@ -164,6 +164,16 @@ VOID GetInfo(HWND hwnd)
 	CHAR szBroadcastAddress[17]{};
 	GetIPBytes(dwBroadcast, szBroadcastAddress);
 	sprintf(szInfo, "Broadcast address:\t%s\n", szBroadcastAddress);
+	strcat(szAllInfo, szInfo);
+
+	HWND hEditPrefix = GetDlgItem(hwnd, IDC_EDIT_PREFIX);
+	CONST INT SIZE_PREFIX = 5;
+	CHAR sz_prefix[SIZE_PREFIX] = {};
+	SendMessage(hEditPrefix, WM_GETTEXT, SIZE_PREFIX, (LPARAM)sz_prefix);
+	DWORD dwPrefix = atoi(sz_prefix);
+	DWORD dwMaxCountIPaddress = pow(2, (32 - dwPrefix)) - 2;
+	if (dwPrefix == 0 || dwPrefix == 32) dwMaxCountIPaddress = 0;
+	sprintf(szInfo, "Maximum number IP-addresses:\t%i\n", dwMaxCountIPaddress);
 	strcat(szAllInfo, szInfo);
 
 	SendMessage(hStaticInfo, WM_SETTEXT, 0, (LPARAM)szAllInfo);
