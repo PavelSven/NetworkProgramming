@@ -20,7 +20,7 @@ Socket::Socket()
 	}
 }
 
-Socket::Socket(string sz_username) : Socket()
+Socket::Socket(string username) : Socket()
 {
 	this->username = username;
 }
