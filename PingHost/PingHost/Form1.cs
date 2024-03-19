@@ -31,6 +31,19 @@ namespace PingHost
         {
             string hostName = textBoxHostName.Text;
 
+            try
+            {
+                if (hostName.Length == 0) throw new PingException("Host name is null");
+
+                PingReply reply = pingSender.Send(hostName, timeout);
+            }
+            catch (PingException)
+            {
+                MessageBox.Show(
+                    "Host name is wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             PacketStatistic packetStatistic = new PacketStatistic(hostName);
             packetsStatistics.Add(packetStatistic);
 
