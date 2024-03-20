@@ -40,7 +40,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         customPlot = new QCustomPlot(centralwidget);
         customPlot->setObjectName(QString::fromUtf8("customPlot"));
-        customPlot->setGeometry(QRect(10, 10, 771, 441));
+        customPlot->setGeometry(QRect(9, 9, 782, 441));
         Plot->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Plot);
         menubar->setObjectName(QString::fromUtf8("menubar"));

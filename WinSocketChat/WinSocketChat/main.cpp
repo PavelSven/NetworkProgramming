@@ -22,7 +22,8 @@ void main()
 	{
 	case 1:
 	{
-		ServerSocket server;
+		string servername = "Server";
+		ServerSocket server(servername);
 		cout << "Starting server" << endl;
 		server.StartHosting(port);
 		while (true)
